@@ -21,8 +21,8 @@ const App = () => (
           <Header />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            {/* <Route exact path="/character" element={<Character />} />
-            <Route exact path="/episode" element={<Episode />} />
+            <Route exact path="/character" element={<Character />} />
+            {/* <Route exact path="/episode" element={<Episode />} />
             <Route exact path="/location" element={<Location />} /> */}
           </Routes>
         </Col>
