@@ -1,0 +1,62 @@
+.header {
+  background-color: black;
+  width: 100vw;
+  padding-bottom: 1em;
+
+  &-logo {
+    height: 10vh;
+  }
+
+  &-home {
+    &-link {
+      background: linear-gradient(to bottom, var(--mainColor) 0%, var(--mainColor) 100%);
+      background-position: 0 100%;
+	    background-repeat: repeat-x;
+	    background-size: 5px 5px;
+      text-decoration: none;
+      font-size: 1.5em;
+      margin: 0 0.5em;
+      padding: 0 0 0.2em 0;
+      text-align: center;
+      
+      &:hover {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23f0f' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+        background-position: 0 100%;
+        background-size: auto 6px;
+        background-repeat: repeat-x;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.navbar {
+  background-color: #fafd7cff;
+}
+
+.navbar-brand {
+  height: 10vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 100%;
+  
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    height: 9vh;
+  }
+
+  .header-logo {
+    height: 9vh;
+  }
+}
