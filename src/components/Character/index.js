@@ -1,90 +1,128 @@
 // == Import npm
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Card,
   Row,
   Col,
   CardGroup,
 } from 'react-bootstrap';
+//import Pagination from 'react-bootstrap/Pagination';
 
 // == Import local
 import './character.scss';
 
 // == Component
 const Character = () => {
-  // let datas = [];
-  // let finalData = [];
-  const [persoData, setPersoData] = useState([]);
-  const findCharacters = () => {
-    axios.get('https://rickandmortyapi.com/api/character')
-    .then((response) => {
-      //results.push(response.data);
-      //console.log(response.data.results);
-      setPersoData(response.data.results);
-      //console.log(datas[0].results[0].image)
-      
-      // finalData.push(datas[0].results);
-      // finalData.map((f) => (ultimeData.push(f)));
-      
-      console.log(persoData);
-    })
+  const [loading, setLoading] = useState(true);
+  const [characters, setCharacters] = useState([]);
+  const [currentPageUrl, setCurrentPageUrl] = useState("https://rickandmortyapi.com/api/character");
+  const [nextPageUrl, setNextPageUrl] = useState();
+  const [prevPageUrl, setPrevPageUrl] = useState();
+  const [pages, setPages] = useState();
+
+  useEffect(() => {
+    const url = currentPageUrl;
+    setLoading(true);
+    const fetchData = async () => {
+      const res = await fetch(url);
+      const data = await res.json();
+      setCharacters(data.results);
+      setLoading(false);
+      setNextPageUrl(data.info.next);
+      setPrevPageUrl(data.info.prev);
+      setPages(data.info.pages)
+    }
+    fetchData();
+  },[currentPageUrl]);
+
+  const nextPage = () => {
+    setCurrentPageUrl(nextPageUrl);
   };
 
-  findCharacters();
+  const prevPage = () => {
+    setCurrentPageUrl(prevPageUrl);
+  };
+
+  const goToPage = (num) => {
+    setCurrentPageUrl(`https://rickandmortyapi.com/api/character?page=${num}`);
+  };
+
+  if (loading) {
+    return "Loading..."
+  };
+  
+  let pageButtons = [];
+
+  for (let index = 1; index <= pages; index++) {
+    pageButtons.push(
+      <button
+        key={index}
+        onClick={() => goToPage(index)}>
+          {index}
+        </button>
+    );
+  };
 
 return (
   <div id="characters" className="characters">
     <Row>
-      <div className="characters-banner">
-        LES PERSONNAGES
-      </div>
       <div className="characters-intro">
-        Voici quelques personnages de Rick et Morty.
+        Voici les personnages de Rick et Morty.
       </div>
       <Col className="col-sm-auto col-md-auto col-lg-auto">
         <CardGroup>
           <div className="characters-cards">
-            {persoData.map((result) => (
-
-           
-            <Card style={{ width: '18rem', margin: '1em' }}>
-              <Card.Img
-                className="characters-cards-img"
-                variant="top"
-                src={result.image}
-                alt="Sport Finder"
-              />
-              <Card.Body className="characters-cards-body">
-                <Card.Title className="characters-cards-title">
-                  Sport Finder
-                </Card.Title>
-                <Card.Text className="characters-cards-text">
-                  Projet de fin de formation.
-                  Recherchez un sport à pratiquer près de chez vous ou partout en France.
-                </Card.Text>
-                <div className="characters-cards-links">
-                  <Card.Link
-                    className="characters-cards-link"
-                    href="https://sport-finder.netlify.app/"
-                    target="_blank"
-                  >
-                    Go to Sport Finder
-                  </Card.Link>
-                  <Card.Link
-                    className="characters-cards-link"
-                    href="https://github.com/SebPARMENTIER/Sport-Finder"
-                    target="_blank"
-                  >
-                    GitHub Page
-                  </Card.Link>
-                </div>
-              </Card.Body>
-            </Card>
+            {characters.map((character) => (
+              <Card
+                key={character.id}
+                style={{ width: '18rem', margin: '1em' }}
+              >
+                <Card.Img
+                  className="characters-cards-img"
+                  variant="top"
+                  src={character.image}
+                  alt={character.name}
+                />
+                <Card.Body className="characters-cards-body">
+                  <Card.Title className="characters-cards-title">
+                    {character.name}
+                  </Card.Title>
+                  <Card.Text className="characters-cards-text">
+                    Statut: {character.status}
+                  </Card.Text>
+                  <Card.Text className="characters-cards-text">
+                    Espèce: {character.species}
+                  </Card.Text>
+                  <Card.Text className="characters-cards-text">
+                    Genre: {character.gender}
+                  </Card.Text>
+                  <Card.Text className="characters-cards-text">
+                    Origine: {character.origin.name}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
              ))}
           </div>
         </CardGroup>
       </Col>
+      <div className="pagination">
+        {prevPage && (
+          <button
+            onClick={prevPage}
+          >
+            Précédent
+          </button>
+        )}
+        {pageButtons}
+        {nextPage && (
+          <button
+            onClick={nextPage}
+          >
+            Suivant
+          </button>
+        )}
+      </div>
     </Row>
   </div>
 );

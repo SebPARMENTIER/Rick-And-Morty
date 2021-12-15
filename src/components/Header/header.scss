@@ -38,6 +38,12 @@
   height: 10vh;
   margin: 0;
   padding: 0;
+  transition: 0.5s;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.1);
+  //box-shadow: 10px 5px 5px #62a4ab;
 }
 
 .container {

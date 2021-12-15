@@ -10,7 +10,7 @@ import logo from 'src/assets/Rick_and_Morty_logo.png';
 const Header = () => (
   <Navbar fixed="top" collapseOnSelect expand="lg">
     <Container>
-      <Navbar.Brand className="header-home-link" href="/">
+      <Navbar.Brand className="header-home" href="/">
         <img className="header-logo" src={logo} alt="Logo" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
