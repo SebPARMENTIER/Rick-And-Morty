@@ -29,7 +29,7 @@ const Home = () => (
         </div>
         </div>
         
-        <Link to="/character" className="game">
+        <Link to="/game" className="game">
         <div className="portal">
           <div className="swish">
             <span></span>

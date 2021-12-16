@@ -8,9 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.scss';
 import Header from 'src/components/Header';
 import Home from 'src/components/Home';
+import Game from 'src/components/Game';
 import Character from 'src/components/Character';
 import Episode from 'src/components/Episode';
-import Location from 'src/components/Location';
 
 // == Composant
 const App = () => (
@@ -21,9 +21,9 @@ const App = () => (
           <Header />
           <Routes>
             <Route exact path="/" element={<Home />} />
+            <Route exact path="/game" element={<Game />} />
             <Route exact path="/character" element={<Character />} />
-            {/* <Route exact path="/episode" element={<Episode />} />
-            <Route exact path="/location" element={<Location />} /> */}
+            {/* <Route exact path="/episode" element={<Episode />} /> */}
           </Routes>
         </Col>
       </Row>

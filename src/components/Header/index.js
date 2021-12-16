@@ -19,9 +19,16 @@ const Header = () => (
           <Nav.Link
             className="header-home-link"
             style={{ color: '#62a4ab' }}
+            href="/game"
+          >
+            Jeu
+          </Nav.Link>
+          <Nav.Link
+            className="header-home-link"
+            style={{ color: '#62a4ab' }}
             href="/character"
           >
-            Personnages
+            Personages
           </Nav.Link>
           <Nav.Link
             className="header-home-link"
@@ -29,13 +36,6 @@ const Header = () => (
             href="/episode"
           >
             Episodes
-          </Nav.Link>
-          <Nav.Link
-            className="header-home-link"
-            style={{ color: '#62a4ab' }}
-            href="/location"
-          >
-            Lieux
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

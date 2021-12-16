@@ -35,7 +35,7 @@
 
 .navbar-brand {
   height: 10vh;
-  margin: 0;
+  margin: 0 1em 0 0;
   padding: 0;
   transition: 0.5s;
 }
@@ -58,6 +58,7 @@
 @media (max-width: 576px) {
   .navbar-brand {
     height: 9vh;
+    margin: 0;
   }
 
   .header-logo {
