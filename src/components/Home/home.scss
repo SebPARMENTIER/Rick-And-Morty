@@ -6,6 +6,10 @@
     justify-content: space-between;
   }
 
+  &-img {
+    display: flex;
+  }
+
   &-img-r {
     display: flex;
   }
@@ -288,17 +292,94 @@
     &-container {
       width: 85vw;
     }
+
+    &-img {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   
+    &-img-r {
+      display: flex;
+      width: 100%;
+      height: 35vh;
+    }
+
     &-img-rick {
-      margin-top: 8em;
-      width: 40%;
+      margin-top: 6em;
+      width: 50%;
       height: auto;
+      object-fit: contain;
+    }
+  
+    &-img-r-text {
+      font-size: 0.6em;
+      margin-top: 10em;
+      width: 100%;
+      height: 35%;
+      margin-left: 1em;
+      padding: 1.5em 2em 2em 2em;
+      text-align: center;
+      background-color: #fafd7cff;
+      border-radius: 100%;
+      position: relative;
+  
+      &::before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        display: block;
+        bottom: 40px;
+        left: auto;
+        right: 120px;
+        border-left: 10px solid transparent;
+        border-right: 10px solid #fafd7cff;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid #fafd7cff;
+      }
+    }
+
+    &-img-m {
+      display: flex;
+      width: 100%;
+      height: 35vh;
     }
   
     &-img-morty {
-      margin-top: 35em;
-      width: 40%;
+      margin-top: 4em;
+      margin-bottom: 2em;
+      width: 50%;
       height: auto;
+      object-fit: contain;
+    }
+  
+    &-img-m-text {
+      font-size: 0.6em;
+      margin: 5em 1em 0 0;
+      width: 100%;
+      height: 40%;
+      padding: 2em;
+      text-align: center;
+      background-color: #fafd7cff;
+      border-radius: 100%;
+      position: relative;
+  
+      &::before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        display: block;
+        bottom: 40px;
+        left: auto;
+        right: -15px;
+        border-left: 10px solid #fafd7cff;
+        border-right: 10px solid transparent;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid #fafd7cff;
+      }
     }
   }
 
