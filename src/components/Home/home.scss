@@ -1,3 +1,28 @@
+.home{
+  
+  &-container {
+    width: 97vw;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-img-m {
+    text-align: right;
+  }
+  
+  &-img-rick {
+    margin-top: 10em;
+    width: 40%;
+    height: auto;
+  }
+
+  &-img-morty {
+    margin-top: 25em;
+    width: 40%;
+    height: auto;
+  }
+}
+
 .portal {
   width: 400px;
   height: 400px;
@@ -169,7 +194,7 @@
   
 }
 
-@keyframes wobxble {
+@keyframes woobbble {
   
   0% {
     width: 202px;
@@ -195,6 +220,25 @@
 }
 
 @media (max-width: 576px) {
+  .home{
+
+    &-container {
+      width: 85vw;
+    }
+  
+    &-img-rick {
+      margin-top: 8em;
+      width: 40%;
+      height: auto;
+    }
+  
+    &-img-morty {
+      margin-top: 35em;
+      width: 40%;
+      height: auto;
+    }
+  }
+
   .portal {
     width: 200px;
     height: 200px;
