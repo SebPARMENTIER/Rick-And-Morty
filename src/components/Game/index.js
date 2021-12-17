@@ -9,7 +9,11 @@ import rick from 'src/assets/Rick_and_Morty_logo.png';
 // == Component
 const Game = () => {
   const [charactersQuantity, setCharactersQuantity] = useState();
-  
+  const [randomCharacter, setRandomCharacter] = useState();
+  const [characterImage, setCharacterImage] = useState();
+  const [characterName, setCharacterName] = useState();
+  const [characterStatus, setCharacterStatus] = useState();
+
   const url = "https://rickandmortyapi.com/api/character";
 
   useEffect(() => {
@@ -21,21 +25,14 @@ const Game = () => {
     fetchData();
   },[]);
 
-  const [randomCharacter, setRandomCharacter] = useState();
-
   const generateRandomNumber = (minlocal, maxlocal) => {
     return Math.round(Math.random() * (maxlocal - minlocal) + minlocal);
   };
 
   const handlePlay = () => {
     setRandomCharacter(generateRandomNumber(1, charactersQuantity));
+    setPlay(true);
   };
-
-  console.log(randomCharacter);
-
-  const [characterImage, setCharacterImage] = useState();
-  const [characterName, setCharacterName] = useState();
-  const [characterStatus, setCharacterStatus] = useState();
 
   useEffect(() => {
     const characterRandomUrl = `https://rickandmortyapi.com/api/character/${randomCharacter}`;
@@ -51,6 +48,44 @@ const Game = () => {
     };
   },[randomCharacter]);
 
+  const [play, setPlay] = useState(false);
+  const [lifes, setLifes] = useState(5);
+  const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+
+  const playAgain = () => {
+    setLifes(5);
+    setScore(0);
+    setGameOver(false);
+    handlePlay();
+  }
+
+  const handleDead = () => {
+    if (lifes === 1) {
+      setGameOver(true);
+      setPlay(false);
+    } else if (characterStatus === "Dead") {
+        setScore(score+100);
+        handlePlay();
+      } else {
+          setLifes(lifes-1);
+          handlePlay();
+        }
+  };
+
+  const handleAlive = () => {
+    if (lifes === 1) {
+      setGameOver(true);
+      setPlay(false);
+    } else if (characterStatus === "Alive") {
+        setScore(score+100);
+        handlePlay();
+      } else {
+          setLifes(lifes-1);
+          handlePlay();
+        }
+  };
+
   return (
     <div className="game">
       <Row>
@@ -62,39 +97,67 @@ const Game = () => {
       </div>
       <div className="game-area">
         <Col className="col-sm-auto col-md-auto col-lg-auto">
-          <div className="game-counter">
-            <div className="game-lives">
-              1 2 3 4 5
-            </div>
-            <div className="game-score">
-              100 points
-            </div>
-          </div>
-          <div className="game-character">
-            <div className="game-character-img">
-              <img src={characterImage} alt={characterName}/>
-            </div>
-            <div className="game-name">
-              {characterName}
-            </div>
-          </div>
-            <div className="game-card">
-              <div className="game-card-img">
-                <img src={rick} alt="Rcik" />
+          {play && (
+            <div className="game-play">
+              <div className="game-play-counter">
+                <div className="game-play-lives">
+                  Vies: {lifes}
+                </div>
+                <div className="game-play-score">
+                  Score: {score} points
+                </div>
               </div>
-              <div className="game-card-name">
-                Rick
+              <div className="game-play-character">
+                <div className="game-play-character-img">
+                  <img src={characterImage} alt={characterName}/>
+                </div>
+                <div className="game-play-name">
+                  {characterName}
+                </div>
               </div>
             </div>
+          )}
+          {!play && (
             <div className="game-button">
-              <button className="game-button-dead" onClick={handlePlay}>
+              <button
+                className={gameOver ? "game-button-play-off" : "game-button-play"}
+                onClick={handlePlay}
+              >
+                Jouer
+              </button>
+            </div>
+          )}
+          {play && (
+            <div className="game-button">
+              <button
+                className="game-button-dead"
+                onClick={handleDead}
+              >
                 Dead
               </button>
-              <button className="game-button-alive">
+              <button
+                className="game-button-alive"
+                onClick={handleAlive}
+              >
                 Alive
               </button>
             </div>
-          
+          )}
+          {gameOver && (
+            <div className="game-final">
+              <div className="game-final-score">
+                Bravo, tu as gagné {score} points !!!
+              </div>
+              <div className="game-button">
+                <button
+                  className="game-button-replay"
+                  onClick={playAgain}
+                  >
+                    Rejouer
+                </button>
+              </div>
+            </div>
+          )}
         </Col>
         </div>
       </Row>
