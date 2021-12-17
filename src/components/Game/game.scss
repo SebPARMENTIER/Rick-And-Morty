@@ -103,6 +103,66 @@
       visibility: hidden;
       height: 0;
     }
-    
+  }
+}
+
+@media (max-width: 576px) {
+  .game {
+    padding-top: 7em;
+  
+    &-intro {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }  
+  
+    &-area {
+      height: 70vh;
+    }
+  
+    &-play {
+  
+      &-counter {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1em;
+      }
+  
+      &-lifes {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+  
+      &-character-img {
+        width: 165px;
+        height: 165px;
+
+        &-resp {
+          width: 155px;
+          height: 155px;
+        }
+      }
+  
+      &-name {
+        font-size: 1.5em;
+      }
+    }
+  
+    &-final {
+      height: 70vh;
+      
+      &-score {
+        font-size: 1.8em;
+        color: #62a4ab;
+      }
+    }
+  
+    &-rule {
+      height: 70vh;
+      
+      &-desc {
+        font-size: 1em;
+      }
+    }
   }
 }

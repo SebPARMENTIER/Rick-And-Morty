@@ -118,7 +118,11 @@ const Game = () => {
               </div>
               <div className="game-play-character">
                 <div className="game-play-character-img">
-                  <img src={characterImage} alt={characterName}/>
+                  <img
+                    className="game-play-character-img-resp"
+                    src={characterImage}
+                    alt={characterName}
+                  />
                 </div>
                 <div className="game-play-name">
                   {characterName}
