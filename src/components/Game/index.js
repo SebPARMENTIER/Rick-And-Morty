@@ -9,6 +9,7 @@ import rick from 'src/assets/Rick_and_Morty_logo.png';
 // == Component
 const Game = () => {
   const [charactersQuantity, setCharactersQuantity] = useState();
+  
   const url = "https://rickandmortyapi.com/api/character";
 
   useEffect(() => {
@@ -20,11 +21,15 @@ const Game = () => {
     fetchData();
   },[]);
 
+  const [randomCharacter, setRandomCharacter] = useState();
+
   const generateRandomNumber = (minlocal, maxlocal) => {
     return Math.round(Math.random() * (maxlocal - minlocal) + minlocal);
   };
 
-  const randomCharacter = generateRandomNumber(1, charactersQuantity);
+  const handlePlay = () => {
+    setRandomCharacter(generateRandomNumber(1, charactersQuantity));
+  };
 
   console.log(randomCharacter);
 
@@ -41,8 +46,10 @@ const Game = () => {
       setCharacterName(data.name);
       setCharacterStatus(data.status);
     }
-    fetchData();
-  },[]);
+    if (randomCharacter) {
+      fetchData();
+    };
+  },[randomCharacter]);
 
   return (
     <div className="game">
@@ -63,8 +70,14 @@ const Game = () => {
               100 points
             </div>
           </div>
-          {/* <div className="game-number">{charactersQuantity}{characterImage}{characterName}{characterStatus}</div> */}
-            
+          <div className="game-character">
+            <div className="game-character-img">
+              <img src={characterImage} alt={characterName}/>
+            </div>
+            <div className="game-name">
+              {characterName}
+            </div>
+          </div>
             <div className="game-card">
               <div className="game-card-img">
                 <img src={rick} alt="Rcik" />
@@ -74,7 +87,7 @@ const Game = () => {
               </div>
             </div>
             <div className="game-button">
-              <button className="game-button-dead">
+              <button className="game-button-dead" onClick={handlePlay}>
                 Dead
               </button>
               <button className="game-button-alive">
