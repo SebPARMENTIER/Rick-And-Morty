@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 
 // == Import local
 import './game.scss';
-import rick from 'src/assets/Rick_and_Morty_logo.png';
+import Heart from 'src/components/Heart';
 
 // == Component
 const Game = () => {
@@ -86,22 +86,31 @@ const Game = () => {
         }
   };
 
+  const thing = '*';
+
   return (
     <div className="game">
       <Row>
       <div className="game-intro">
         Dead or Alive ?
       </div>
-      <div className="game-desc">
-        Les règles du jeu sont simples. Il faut avoir vu tous les épisodes de Rick et Morty. Pour chaque personnage, il suffit de répondre "Dead" ou "Alive". Tu as 5 vies et tu marques 100 points par bonne réponse.
-      </div>
+      
       <div className="game-area">
         <Col className="col-sm-auto col-md-auto col-lg-auto">
           {play && (
             <div className="game-play">
               <div className="game-play-counter">
-                <div className="game-play-lives">
-                  Vies: {lifes}
+                <div className="game-play-lifes">
+                  <div className="game-play-title">
+                    Vies:
+                  </div>
+                  <div className="game-play-heart">
+                    <Heart
+                      key={lifes}
+                      rating={lifes}
+                    />
+                  </div>
+                   
                 </div>
                 <div className="game-play-score">
                   Score: {score} points
@@ -118,13 +127,18 @@ const Game = () => {
             </div>
           )}
           {!play && (
-            <div className="game-button">
-              <button
-                className={gameOver ? "game-button-play-off" : "game-button-play"}
-                onClick={handlePlay}
-              >
-                Jouer
-              </button>
+            <div className={gameOver ? "game-rule-off" : "game-rule"}>
+              <div className="game-rule-desc">
+                Les règles du jeu sont simples. Il faut avoir vu tous les épisodes de Rick et Morty. Pour chaque personnage, il suffit de répondre "Dead" ou "Alive". Tu as 5 vies et tu marques 100 points par bonne réponse.
+              </div>
+              <div className="game-button">
+                <button
+                  className="game-button-play"
+                  onClick={handlePlay}
+                >
+                  Jouer
+                </button>
+              </div>
             </div>
           )}
           {play && (

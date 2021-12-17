@@ -1,0 +1,11 @@
+.ratingStatic {
+  height: 40px;
+  margin: auto ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.starStatic {
+  transition: color 200ms;
+  margin: 0 0.3em;
+}
