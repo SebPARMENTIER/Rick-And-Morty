@@ -42,6 +42,10 @@
   transition: 0.5s;
   border: 1px solid #62a4ab;
 }
+.pagination {
+  margin: auto;
+  margin-bottom: 0.5em;
+}
 
 @media (max-width: 576px) {
   .characters {
