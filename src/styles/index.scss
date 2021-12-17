@@ -4,3 +4,15 @@
 body {
   font-family: sans-serif;
 }
+
+body::-webkit-scrollbar {
+  width: 0.8em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #fafd7cff;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #7c3e1d;
+} 
