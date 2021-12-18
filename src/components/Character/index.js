@@ -6,7 +6,7 @@ import {
   Col,
   CardGroup,
 } from 'react-bootstrap';
-import Pagination from 'react-bootstrap/Pagination';
+//import Pagination from 'react-bootstrap/Pagination';
 
 // == Import local
 import './character.scss';
@@ -55,12 +55,11 @@ const Character = () => {
 
   for (let index = 1; index <= pages; index++) {
     pageButtons.push(
-      <Pagination.Item
+      <button
         key={index}
-        //active={index}
         onClick={() => goToPage(index)}>
           {index}
-      </Pagination.Item>
+      </button>
     );
   };
 
@@ -107,7 +106,7 @@ return (
         </CardGroup>
       </Col>
       <div className="pagination">
-        {/* {prevPage && (
+        {prevPage && (
           <button
             onClick={prevPage}
           >
@@ -121,8 +120,8 @@ return (
           >
             Suivant
           </button>
-        )} */}
-        <Pagination>
+        )}
+        {/* <Pagination>
           <Pagination.First />
           {prevPage && (<Pagination.Prev onClick={prevPage}/>)}
           <Pagination.Item>{pageButtons[0]}</Pagination.Item>
@@ -130,7 +129,7 @@ return (
           <Pagination.Item>{pageButtons[41]}</Pagination.Item>
           <Pagination.Next onClick={nextPage}/>
           <Pagination.Last />
-        </Pagination>
+        </Pagination> */}
       </div>
     </Row>
   </div>
