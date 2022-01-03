@@ -1,12 +1,12 @@
 // == Import npm
 import React, { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
 import {
   Card,
   Row,
   Col,
   CardGroup,
 } from 'react-bootstrap';
-//import Pagination from 'react-bootstrap/Pagination';
 
 // == Import local
 import './character.scss';
@@ -15,59 +15,44 @@ import './character.scss';
 const Character = () => {
   const [loading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
-  const [currentPageUrl, setCurrentPageUrl] = useState("https://rickandmortyapi.com/api/character");
-  const [nextPageUrl, setNextPageUrl] = useState();
-  const [prevPageUrl, setPrevPageUrl] = useState();
+  const [charactersTotal, setCharactersTotal] = useState();
   const [pages, setPages] = useState();
 
   useEffect(() => {
-    const url = currentPageUrl;
     setLoading(true);
-    const fetchData = async () => {
-      const res = await fetch(url);
+    const getPages = async () => {
+      const res = await fetch("https://rickandmortyapi.com/api/character");
       const data = await res.json();
+      setPages(data.info.pages);
+      setCharactersTotal(data.info.count);
       setCharacters(data.results);
       setLoading(false);
-      setNextPageUrl(data.info.next);
-      setPrevPageUrl(data.info.prev);
-      setPages(data.info.pages)
-    }
-    fetchData();
-  },[currentPageUrl]);
-
-  const nextPage = () => {
-    setCurrentPageUrl(nextPageUrl);
-  };
-
-  const prevPage = () => {
-    setCurrentPageUrl(prevPageUrl);
-  };
-
-  const goToPage = (num) => {
-    setCurrentPageUrl(`https://rickandmortyapi.com/api/character?page=${num}`);
-  };
-
+    };
+    getPages();
+  },[]);
+  
   if (loading) {
     return "Loading..."
   };
-  
-  let pageButtons = [];
 
-  for (let index = 1; index <= pages; index++) {
-    pageButtons.push(
-      <button
-        key={index}
-        onClick={() => goToPage(index)}>
-          {index}
-      </button>
-    );
+  const getDatas = async (currentPage) => {
+    const res = await fetch(`https://rickandmortyapi.com/api/character?page=${currentPage}`);
+    const data = await res.json();
+    return data;
+  };
+
+  const handlePageClick = async (data) => {
+    let currentPage = data.selected + 1;
+    const datasFormAPI = await getDatas(currentPage);
+    setCharacters(datasFormAPI.results);
+    window.scrollTo(0, 0);
   };
 
 return (
   <div id="characters" className="characters">
     <Row>
       <div className="characters-intro">
-        Voici les personnages de Rick et Morty.
+        Voici les {charactersTotal} personnages de Rick et Morty.
       </div>
       <Col className="col-sm-auto col-md-auto col-lg-auto">
         <CardGroup>
@@ -105,31 +90,26 @@ return (
           </div>
         </CardGroup>
       </Col>
-      <div className="pagination">
-        {prevPage && (
-          <button
-            onClick={prevPage}
-          >
-            Précédent
-          </button>
-        )}
-        {pageButtons}
-        {nextPage && (
-          <button
-            onClick={nextPage}
-          >
-            Suivant
-          </button>
-        )}
-        {/* <Pagination>
-          <Pagination.First />
-          {prevPage && (<Pagination.Prev onClick={prevPage}/>)}
-          <Pagination.Item>{pageButtons[0]}</Pagination.Item>
-          <Pagination.Ellipsis />
-          <Pagination.Item>{pageButtons[41]}</Pagination.Item>
-          <Pagination.Next onClick={nextPage}/>
-          <Pagination.Last />
-        </Pagination> */}
+      <div className="paginations">
+        <ReactPaginate
+          previousLabel="<"
+          nextLabel=">"
+          breakLabel="..."          
+          pageCount={pages}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={handlePageClick}
+          containerClassName="pagination justify-content-center"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          breakClassName="page-item"
+          breakLinkClassName="page-link"
+          activeClassName="active"
+        />
       </div>
     </Row>
   </div>
