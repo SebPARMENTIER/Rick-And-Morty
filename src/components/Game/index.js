@@ -61,6 +61,9 @@ const Game = () => {
     setLifes(5);
     setScore(0);
     setGameOver(false);
+    setCharacterImage();
+    setCharacterName();
+    setCharacterStatus();
     handlePlay();
   }
 
