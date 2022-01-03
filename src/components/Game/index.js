@@ -39,9 +39,13 @@ const Game = () => {
     const fetchData = async () => {
       const res = await fetch(characterRandomUrl);
       const data = await res.json();
-      setCharacterImage(data.image);
-      setCharacterName(data.name);
-      setCharacterStatus(data.status);
+      if (data.status === 'unknown') {
+        handlePlay();
+      } else {
+        setCharacterImage(data.image);
+        setCharacterName(data.name);
+        setCharacterStatus(data.status);
+      }
     }
     if (randomCharacter) {
       fetchData();
