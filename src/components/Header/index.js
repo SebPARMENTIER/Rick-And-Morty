@@ -33,9 +33,9 @@ const Header = () => (
           <Nav.Link
             className="header-home-link"
             style={{ color: '#62a4ab' }}
-            href="/episode"
+            href="/season"
           >
-            Episodes
+            Saisons
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

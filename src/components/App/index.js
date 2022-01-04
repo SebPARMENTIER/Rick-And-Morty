@@ -10,7 +10,7 @@ import Header from 'src/components/Header';
 import Home from 'src/components/Home';
 import Game from 'src/components/Game';
 import Character from 'src/components/Character';
-import Episode from 'src/components/Episode';
+import Season from 'src/components/Season';
 
 // == Composant
 const App = () => (
@@ -23,7 +23,7 @@ const App = () => (
             <Route exact path="/" element={<Home />} />
             <Route exact path="/game" element={<Game />} />
             <Route exact path="/character" element={<Character />} />
-            {/* <Route exact path="/episode" element={<Episode />} /> */}
+            <Route exact path="/season" element={<Season />} />
           </Routes>
         </Col>
       </Row>
