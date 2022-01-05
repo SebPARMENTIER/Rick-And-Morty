@@ -1,5 +1,6 @@
 // == Import npm
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Card,
   Row,
@@ -29,7 +30,7 @@ const Season = () => {
     };
     fetchData();
   },[]);
-  
+
   console.log(seasonsData);
 
   if (loading) {
@@ -46,25 +47,30 @@ return (
         <CardGroup>
           <div className="seasons-cards">
             {seasonsData.map((season) => (
-              <Card
+              <Link
                 key={season.id}
-                style={{ width: '18rem', margin: '1em' }}
+                to={`/season/${season.season_number}`}
               >
-                <Card.Img
-                  className="seasons-cards-img"
-                  variant="top"
-                  src={urlImage + season.poster_path}
-                  alt={season.name}
-                />
-                <Card.Body className="seasons-cards-body">
-                  <Card.Title className="seasons-cards-title">
-                    {season.name}
-                  </Card.Title>
-                  <Card.Text className="seasons-cards-text">
-                    Nombre d'épisodes: {season.episode_count}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+                <Card
+                  style={{ width: '18rem', margin: '1em' }}
+                >
+                  <Card.Img
+                    className="seasons-cards-img"
+                    variant="top"
+                    src={urlImage + season.poster_path}
+                    alt={season.name}
+                  />
+                  <Card.Body className="seasons-cards-body">
+                    <Card.Title className="seasons-cards-title">
+                      {season.name}
+                    </Card.Title>
+                    <Card.Text className="seasons-cards-text">
+                      Nombre d'épisodes: {season.episode_count}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Link>
+              
              ))}
           </div>
         </CardGroup>

@@ -11,6 +11,7 @@ import Home from 'src/components/Home';
 import Game from 'src/components/Game';
 import Character from 'src/components/Character';
 import Season from 'src/components/Season';
+import Episode from 'src/components/Episode';
 
 // == Composant
 const App = () => (
@@ -24,6 +25,7 @@ const App = () => (
             <Route exact path="/game" element={<Game />} />
             <Route exact path="/character" element={<Character />} />
             <Route exact path="/season" element={<Season />} />
+            <Route exact path="/season/:id" element={<Episode />} />
           </Routes>
         </Col>
       </Row>
