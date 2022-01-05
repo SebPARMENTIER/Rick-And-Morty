@@ -51,7 +51,7 @@
 
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav .nav-link {
-    padding: 0;
+    padding: 0 0 0.2em 0;
   }
 }
 
@@ -59,9 +59,22 @@
   .navbar-brand {
     height: 9vh;
     margin: 0;
+    transition: none;
+  }
+
+  .navbar-brand:hover {
+    transform: none;
   }
 
   .header-logo {
     height: 9vh;
+  }
+
+  .header-home-link {
+    padding: 0.5em;
+  }
+
+  .header-home-link:hover {
+    background-image: none;
   }
 }

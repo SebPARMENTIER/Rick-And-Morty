@@ -4,8 +4,14 @@
   &-intro {
     color: white;
     text-align: center;
-    font-size: 1.5em;
-    margin: 3em 0;
+    font-size: 2.5em;
+    margin: 1.5em 0 0 0;
+  }
+
+  &-back {
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: 0.8em;
   }
 
   &-cards {
@@ -25,7 +31,8 @@
     &-title {
       color: #62a4ab;
       text-align: center;
-      font-size: 1.8em;
+      font-size: 1.3em;
+      margin-bottom: 0.5em;
     }
     &-text {
       color: #d15a60;
@@ -34,14 +41,14 @@
     }
   }
 }
-.card:hover {
-  transform: scale(1.1);
-  box-shadow: 10px 5px 5px #62a4ab;
-}
-.card {
-  transition: 0.5s;
-  border: 1px solid #62a4ab;
-}
+// .card:hover {
+//   transform: scale(1.1);
+//   box-shadow: 10px 5px 5px #62a4ab;
+// }
+// .card {
+//   transition: 0.5s;
+//   border: 1px solid #62a4ab;
+// }
 .pagination {
   display: flex;
   flex-wrap: wrap;
@@ -49,15 +56,14 @@
 
 @media (max-width: 576px) {
   .episodes {
-    padding-top: 5em;
-  }
-  .episodes-banner {
-    font-size: 1.2em;
-    padding: 0.3125em 0.625em;
+    padding-top: 3.5em;
   }
   .episodes-intro {
-    font-size: 1em;
-    margin: 1em 0;
+    font-size: 2em;
+    margin: 1em 0 0 0;
+  }
+  .episodes-back {
+    margin-bottom: 1.2em;
   }
   .card {
     margin: 0 0 2em 0 !important;

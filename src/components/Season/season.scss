@@ -18,15 +18,19 @@
       height: auto;
       object-fit: cover;
     }
+
     &-body {
       background-color: #fafd7cff;
       border-top: 1px solid #62a4ab;
     }
+
     &-title {
       color: #62a4ab;
       text-align: center;
       font-size: 1.8em;
+      margin-bottom: 0.5em;
     }
+
     &-text {
       color: #d15a60;
       text-align: center;
@@ -34,26 +38,26 @@
     }
   }
 }
-.card:hover {
+
+.seasons-cards-single {
+  transition: 0.5s;
+  margin: 1em;
+  border: 1px solid #62a4ab;
+  background-color: #fafd7cff;
+}
+
+.seasons-cards-single:hover {
   transform: scale(1.1);
   box-shadow: 10px 5px 5px #62a4ab;
 }
+
 .card {
-  transition: 0.5s;
-  border: 1px solid #62a4ab;
-}
-.pagination {
-  display: flex;
-  flex-wrap: wrap;
+  border: none;
 }
 
 @media (max-width: 576px) {
   .seasons {
     padding-top: 5em;
-  }
-  .seasons-banner {
-    font-size: 1.2em;
-    padding: 0.3125em 0.625em;
   }
   .seasons-intro {
     font-size: 1em;
@@ -74,7 +78,10 @@
     font-size: 1em;
     line-height: normal;
   }
-  .seasons-cards-links {
-    margin-top: 1em;
+  .seasons-cards-single {
+    transition: none;
+  }
+  .seasons-cards-single:hover {
+    transform: none;
   }
 }

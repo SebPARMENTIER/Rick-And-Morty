@@ -58,34 +58,37 @@ return (
         <CardGroup>
           <div className="characters-cards">
             {characters.map((character) => (
-              <Card
-                key={character.id}
-                style={{ width: '18rem', margin: '1em' }}
-              >
-                <Card.Img
-                  className="characters-cards-img"
-                  variant="top"
-                  src={character.image}
-                  alt={character.name}
-                />
-                <Card.Body className="characters-cards-body">
-                  <Card.Title className="characters-cards-title">
-                    {character.name}
-                  </Card.Title>
-                  <Card.Text className="characters-cards-text">
-                    Statut: {character.status}
-                  </Card.Text>
-                  <Card.Text className="characters-cards-text">
-                    Espèce: {character.species}
-                  </Card.Text>
-                  <Card.Text className="characters-cards-text">
-                    Genre: {character.gender}
-                  </Card.Text>
-                  <Card.Text className="characters-cards-text">
-                    Origine: {character.origin.name}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <div className="character-cards-single">
+                <Card
+                  key={character.id}
+                  style={{ width: '18rem' }}
+                >
+                  <Card.Img
+                    className="characters-cards-img"
+                    variant="top"
+                    src={character.image}
+                    alt={character.name}
+                  />
+                  <Card.Body className="characters-cards-body">
+                    <Card.Title className="characters-cards-title">
+                      {character.name}
+                    </Card.Title>
+                    <Card.Text className="characters-cards-text">
+                      Statut: {character.status}
+                    </Card.Text>
+                    <Card.Text className="characters-cards-text">
+                      Espèce: {character.species}
+                    </Card.Text>
+                    <Card.Text className="characters-cards-text">
+                      Genre: {character.gender}
+                    </Card.Text>
+                    <Card.Text className="characters-cards-text">
+                      Origine: {character.origin.name}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+              
              ))}
           </div>
         </CardGroup>

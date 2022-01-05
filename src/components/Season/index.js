@@ -47,30 +47,32 @@ return (
         <CardGroup>
           <div className="seasons-cards">
             {seasonsData.filter(season => season.season_number > 0).map((season) => (
-              <Link
-                key={season.id}
-                to={`/season/${season.season_number}`}
-              >
-                <Card
-                  style={{ width: '18rem', margin: '1em' }}
+              <div className="seasons-cards-single">
+                <Link
+                  key={season.id}
+                  to={`/season/${season.season_number}`}
+                  style={{ textDecoration: 'none'}}
                 >
-                  <Card.Img
-                    className="seasons-cards-img"
-                    variant="top"
-                    src={urlImage + season.poster_path}
-                    alt={season.name}
-                  />
-                  <Card.Body className="seasons-cards-body">
-                    <Card.Title className="seasons-cards-title">
-                      {season.name}
-                    </Card.Title>
-                    <Card.Text className="seasons-cards-text">
-                      Nombre d'épisodes: {season.episode_count}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-              
+                  <Card
+                    style={{ width: '18rem' }}
+                  >
+                    <Card.Img
+                      className="seasons-cards-img"
+                      variant="top"
+                      src={urlImage + season.poster_path}
+                      alt={season.name}
+                    />
+                    <Card.Body className="seasons-cards-body">
+                      <Card.Title className="seasons-cards-title">
+                        {season.name}
+                      </Card.Title>
+                      <Card.Text className="seasons-cards-text">
+                        Nombre d'épisodes: {season.episode_count}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </div>
              ))}
           </div>
         </CardGroup>

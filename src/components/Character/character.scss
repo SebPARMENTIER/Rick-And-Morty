@@ -18,15 +18,18 @@
       height: auto;
       object-fit: cover;
     }
+
     &-body {
       background-color: #fafd7cff;
       border-top: 1px solid #62a4ab;
     }
+
     &-title {
       color: #62a4ab;
       text-align: center;
       font-size: 1.8em;
     }
+
     &-text {
       color: #d15a60;
       text-align: center;
@@ -34,33 +37,47 @@
     }
   }
 }
-.card:hover {
-  transform: scale(1.1);
-  box-shadow: 10px 5px 5px #62a4ab;
-}
-.card {
-  transition: 0.5s;
+
+.character-cards-single {
+  transition: all 0.3s ease-in-out 0s;
   border: 1px solid #62a4ab;
+  margin: 1em;
+  background-color: #fafd7c;
 }
-.pagination {
+
+.character-cards-single:hover {
+  cursor: default;
+  transform: rotateY(360deg);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.card {
+  border: none;
+}
+
+.paginations {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.page-item.active .page-link {
+  background-color: #62a4ab;
+  border-color: #62a4ab;
+}
+
+.page-link {
+  color: #7c3e1d;;
 }
 
 @media (max-width: 576px) {
   .characters {
     padding-top: 5em;
   }
-  .characters-banner {
-    font-size: 1.2em;
-    padding: 0.3125em 0.625em;
-  }
   .characters-intro {
     font-size: 1.2em;
     margin: 1em 0;
-  }
-  .card {
-    margin: 0 0 2em 0 !important;
   }
   .card-group {
     display: flex;
@@ -76,5 +93,15 @@
   }
   .characters-cards-links {
     margin-top: 1em;
+  }
+  .character-cards-single:hover {
+    transform: none;
+    transition: none;
+  }
+  .character-cards-single {
+    transition: none;
+  }
+  .pagination {
+    font-size: 0.8em;
   }
 }

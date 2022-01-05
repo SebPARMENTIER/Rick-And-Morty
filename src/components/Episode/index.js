@@ -37,7 +37,7 @@ return (
       <div className="episodes-intro">
         Saison {id}
       </div>
-      <div className="episodes-intro">
+      <div className="episodes-back">
         <Link to="/season">
           Retour à la liste des saisons
         </Link>
