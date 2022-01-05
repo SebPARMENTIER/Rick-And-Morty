@@ -46,7 +46,7 @@ return (
       <Col className="col-sm-auto col-md-auto col-lg-auto">
         <CardGroup>
           <div className="seasons-cards">
-            {seasonsData.map((season) => (
+            {seasonsData.filter(season => season.season_number > 0).map((season) => (
               <Link
                 key={season.id}
                 to={`/season/${season.season_number}`}
