@@ -10,6 +10,7 @@ import {
 
 // == Import local
 import './season.scss';
+import Loading from 'src/components/Loading';
 
 // == Component
 const Season = () => {
@@ -31,55 +32,52 @@ const Season = () => {
     fetchData();
   },[]);
 
-  console.log(seasonsData);
-
-  if (loading) {
-    return "Loading..."
-  };
-
-return (
-  <div id="seasons" className="seasons">
-    <Row>
-      <div className="seasons-intro">
-        {synopsis}
-      </div>
-      <Col className="col-sm-auto col-md-auto col-lg-auto">
-        <CardGroup>
-          <div className="seasons-cards">
-            {seasonsData.filter(season => season.season_number > 0).map((season) => (
-              <div className="seasons-cards-single">
-                <Link
-                  key={season.id}
-                  to={`/season/${season.season_number}`}
-                  style={{ textDecoration: 'none'}}
-                >
-                  <Card
-                    style={{ width: '18rem' }}
-                  >
-                    <Card.Img
-                      className="seasons-cards-img"
-                      variant="top"
-                      src={urlImage + season.poster_path}
-                      alt={season.name}
-                    />
-                    <Card.Body className="seasons-cards-body">
-                      <Card.Title className="seasons-cards-title">
-                        {season.name}
-                      </Card.Title>
-                      <Card.Text className="seasons-cards-text">
-                        Nombre d'épisodes: {season.episode_count}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </div>
-             ))}
+  return (
+    <div id="seasons" className="seasons">
+      { loading && (<Loading />) }
+      { !loading && (
+        <Row>
+          <div className="seasons-intro">
+            {synopsis}
           </div>
-        </CardGroup>
-      </Col>
-    </Row>
-  </div>
-);
+          <Col className="col-sm-auto col-md-auto col-lg-auto">
+            <CardGroup>
+              <div className="seasons-cards">
+                {seasonsData.filter(season => season.season_number > 0).map((season) => (
+                  <div className="seasons-cards-single">
+                    <Link
+                      key={season.id}
+                      to={`/season/${season.season_number}`}
+                      style={{ textDecoration: 'none'}}
+                    >
+                      <Card
+                        style={{ width: '18rem' }}
+                      >
+                        <Card.Img
+                          className="seasons-cards-img"
+                          variant="top"
+                          src={urlImage + season.poster_path}
+                          alt={season.name}
+                        />
+                        <Card.Body className="seasons-cards-body">
+                          <Card.Title className="seasons-cards-title">
+                            {season.name}
+                          </Card.Title>
+                          <Card.Text className="seasons-cards-text">
+                            Nombre d'épisodes: {season.episode_count}
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </CardGroup>
+          </Col>
+        </Row>
+      )}
+    </div>
+  );
 }
 
 // == Export

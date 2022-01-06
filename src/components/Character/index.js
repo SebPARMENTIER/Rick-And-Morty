@@ -10,10 +10,11 @@ import {
 
 // == Import local
 import './character.scss';
+import Loading from 'src/components/Loading';
 
 // == Component
 const Character = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [characters, setCharacters] = useState([]);
   const [charactersTotal, setCharactersTotal] = useState();
   const [pages, setPages] = useState();
@@ -30,10 +31,6 @@ const Character = () => {
     };
     getPages();
   },[]);
-  
-  if (loading) {
-    return "Loading..."
-  };
 
   const getDatas = async (currentPage) => {
     const res = await fetch(`https://rickandmortyapi.com/api/character?page=${currentPage}`);
@@ -48,75 +45,77 @@ const Character = () => {
     window.scrollTo(0, 0);
   };
 
-return (
-  <div id="characters" className="characters">
-    <Row>
-      <div className="characters-intro">
-        Voici les {charactersTotal} personnages de Rick et Morty.
-      </div>
-      <Col className="col-sm-auto col-md-auto col-lg-auto">
-        <CardGroup>
-          <div className="characters-cards">
-            {characters.map((character) => (
-              <div className="character-cards-single">
-                <Card
-                  key={character.id}
-                  style={{ width: '18rem' }}
-                >
-                  <Card.Img
-                    className="characters-cards-img"
-                    variant="top"
-                    src={character.image}
-                    alt={character.name}
-                  />
-                  <Card.Body className="characters-cards-body">
-                    <Card.Title className="characters-cards-title">
-                      {character.name}
-                    </Card.Title>
-                    <Card.Text className="characters-cards-text">
-                      Statut: {character.status}
-                    </Card.Text>
-                    <Card.Text className="characters-cards-text">
-                      Espèce: {character.species}
-                    </Card.Text>
-                    <Card.Text className="characters-cards-text">
-                      Genre: {character.gender}
-                    </Card.Text>
-                    <Card.Text className="characters-cards-text">
-                      Origine: {character.origin.name}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-              
-             ))}
+  return (
+    <div id="characters" className="characters">
+      { loading && (<Loading />) }
+      { !loading && (
+        <Row>
+          <div className="characters-intro">
+            Voici les {charactersTotal} personnages de Rick et Morty.
           </div>
-        </CardGroup>
-      </Col>
-      <div className="paginations">
-        <ReactPaginate
-          previousLabel="<"
-          nextLabel=">"
-          breakLabel="..."          
-          pageCount={pages}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={3}
-          onPageChange={handlePageClick}
-          containerClassName="pagination justify-content-center"
-          pageClassName="page-item"
-          pageLinkClassName="page-link"
-          previousClassName="page-item"
-          previousLinkClassName="page-link"
-          nextClassName="page-item"
-          nextLinkClassName="page-link"
-          breakClassName="page-item"
-          breakLinkClassName="page-link"
-          activeClassName="active"
-        />
-      </div>
-    </Row>
-  </div>
-);
+          <Col className="col-sm-auto col-md-auto col-lg-auto">
+            <CardGroup>
+              <div className="characters-cards">
+                {characters.map((character) => (
+                  <div className="character-cards-single">
+                    <Card
+                      key={character.id}
+                      style={{ width: '18rem' }}
+                    >
+                      <Card.Img
+                        className="characters-cards-img"
+                        variant="top"
+                        src={character.image}
+                        alt={character.name}
+                      />
+                      <Card.Body className="characters-cards-body">
+                        <Card.Title className="characters-cards-title">
+                          {character.name}
+                        </Card.Title>
+                        <Card.Text className="characters-cards-text">
+                          Statut: {character.status}
+                        </Card.Text>
+                        <Card.Text className="characters-cards-text">
+                          Espèce: {character.species}
+                        </Card.Text>
+                        <Card.Text className="characters-cards-text">
+                          Genre: {character.gender}
+                        </Card.Text>
+                        <Card.Text className="characters-cards-text">
+                          Origine: {character.origin.name}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </CardGroup>
+          </Col>
+          <div className="paginations">
+            <ReactPaginate
+              previousLabel="<"
+              nextLabel=">"
+              breakLabel="..."          
+              pageCount={pages}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={3}
+              onPageChange={handlePageClick}
+              containerClassName="pagination justify-content-center"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              activeClassName="active"
+            />
+          </div>
+        </Row>
+      )}
+    </div>
+  );
 }
 
 // == Export
