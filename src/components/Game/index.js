@@ -17,6 +17,7 @@ const Game = () => {
 
   const url = "https://rickandmortyapi.com/api/character";
 
+  // Ask Rick and Morty API to find how many characters exists
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
@@ -32,6 +33,7 @@ const Game = () => {
     return Math.round(Math.random() * (maxlocal - minlocal) + minlocal);
   };
 
+  // Find a random character
   const handlePlay = () => {
     setRandomCharacter(generateRandomNumber(1, charactersQuantity));
     setPlay(true);
@@ -39,6 +41,8 @@ const Game = () => {
 
   const [loading, setLoading] = useState(false);
 
+  // Ask Rick and Morty API to find infos about random character
+  // If its status is unknown, ignore it and find another character with daed or alive status
   useEffect(() => {
     setLoading(true);
     const characterRandomUrl = `https://rickandmortyapi.com/api/character/${randomCharacter}`;
@@ -61,11 +65,13 @@ const Game = () => {
     };
   },[randomCharacter]);
 
+  // Initial state before playing
   const [play, setPlay] = useState(false);
   const [lifes, setLifes] = useState(5);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
+  // Reset state if play again
   const playAgain = () => {
     setLifes(5);
     setScore(0);
@@ -76,6 +82,7 @@ const Game = () => {
     handlePlay();
   };
 
+  // Code to execute if answer is dead
   const handleDead = () => {
     if (lifes === 1) {
       setGameOver(true);
@@ -89,6 +96,7 @@ const Game = () => {
         }
   };
 
+  // Code to execute if answer is alive
   const handleAlive = () => {
     if (lifes === 1) {
       setGameOver(true);

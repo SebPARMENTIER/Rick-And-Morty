@@ -19,6 +19,7 @@ const Character = () => {
   const [charactersTotal, setCharactersTotal] = useState();
   const [pages, setPages] = useState();
 
+  // Ask Rick and Morty API to find characters and number of pages
   useEffect(() => {
     setLoading(true);
     const getPages = async () => {
@@ -32,12 +33,14 @@ const Character = () => {
     getPages();
   },[]);
 
+  // Ask Rick and Morty API...
   const getDatas = async (currentPage) => {
     const res = await fetch(`https://rickandmortyapi.com/api/character?page=${currentPage}`);
     const data = await res.json();
     return data;
   };
 
+  // ...to find characters per page
   const handlePageClick = async (data) => {
     let currentPage = data.selected + 1;
     const datasFormAPI = await getDatas(currentPage);

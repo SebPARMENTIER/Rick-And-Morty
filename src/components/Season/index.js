@@ -20,6 +20,7 @@ const Season = () => {
   const urlData = `https://api.themoviedb.org/3/tv/60625?${process.env.API_KEY}&language=fr-FR`;
   const urlImage = "https://image.tmdb.org/t/p/original";
 
+  // Ask the movie database API to find all seasons
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {

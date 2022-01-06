@@ -22,6 +22,7 @@ const Episode = () => {
   const [dataEpisode, setDataEpisode] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // Ask the movie database API to find all episodes per season
   useEffect(() => {
     setLoading(true);
     const fetchDataEpisode = async () => {
