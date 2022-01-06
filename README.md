@@ -1,6 +1,6 @@
 # Rick-And-Morty
 
-![image](front/src/assets/home_capture.PNG)
+![image](src/assets/home_capture.PNG)
 
 ## Table of contents
 
@@ -36,9 +36,8 @@ Enjoy your Rick-And-Morty.
 ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
-![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 
 #### API
 
-Rick and Morty API
+Rick and Morty API  
 The Movie Database API
