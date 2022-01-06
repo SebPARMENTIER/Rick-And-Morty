@@ -5,7 +5,7 @@
     color: white;
     text-align: center;
     font-size: 2.5em;
-    margin: 1.5em 0 0 0;
+    margin: 3em 0 0.8em 0;
   }
 
   &-back {
@@ -19,21 +19,31 @@
     flex-wrap: wrap;
     justify-content: center;
 
+    &-single {
+      margin: 1em;
+      border: 1px solid #62a4ab;
+      background-color: #fafd7cff;
+      border-radius: 20px;
+    }
+
     &-img {
       width: 100%;
       height: auto;
       object-fit: cover;
+      border-radius: 10px;
     }
+
     &-body {
       background-color: #fafd7cff;
-      border-top: 1px solid #62a4ab;
     }
+
     &-title {
       color: #62a4ab;
       text-align: center;
       font-size: 1.3em;
       margin-bottom: 0.5em;
     }
+
     &-text {
       color: #d15a60;
       text-align: center;
@@ -41,14 +51,16 @@
     }
   }
 }
-// .card:hover {
-//   transform: scale(1.1);
-//   box-shadow: 10px 5px 5px #62a4ab;
-// }
-// .card {
-//   transition: 0.5s;
-//   border: 1px solid #62a4ab;
-// }
+
+.card {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #7c3e1d;
+}
+
 .pagination {
   display: flex;
   flex-wrap: wrap;
@@ -65,9 +77,6 @@
   .episodes-back {
     margin-bottom: 1.2em;
   }
-  .card {
-    margin: 0 0 2em 0 !important;
-  }
   .card-group {
     display: flex;
     flex-wrap: wrap;
@@ -79,8 +88,5 @@
   .episodes-cards-text {
     font-size: 1em;
     line-height: normal;
-  }
-  .episodes-cards-links {
-    margin-top: 1em;
   }
 }

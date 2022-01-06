@@ -16,7 +16,7 @@ const Season = () => {
   const [loading, setLoading] = useState(false);
   const [seasonsData, setSeasonsData] = useState([]);
   const [synopsis, setSynopsis] = useState();
-  const urlData = "https://api.themoviedb.org/3/tv/60625?api_key=9b3189df2a7c7327d4392c7a38f225e9&language=fr-FR";
+  const urlData = `https://api.themoviedb.org/3/tv/60625?${process.env.API_KEY}&language=fr-FR`;
   const urlImage = "https://image.tmdb.org/t/p/original";
 
   useEffect(() => {

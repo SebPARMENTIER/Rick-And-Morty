@@ -5,10 +5,13 @@
     color: white;
     text-align: center;
     font-size: 1.5em;
-    margin: 3em 0;
+    line-height: 1.8em;
+    margin: 4em 0;
   }
 
   &-cards {
+    width: 100vw;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -17,6 +20,7 @@
       width: 100%;
       height: auto;
       object-fit: cover;
+      border-radius: 0;
     }
 
     &-body {
@@ -62,9 +66,6 @@
   .seasons-intro {
     font-size: 1em;
     margin: 1em 0;
-  }
-  .card {
-    margin: 0 0 2em 0 !important;
   }
   .card-group {
     display: flex;

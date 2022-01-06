@@ -22,7 +22,7 @@ const Episode = () => {
 
   useEffect(() => {
     const fetchDataEpisode = async () => {
-      const res = await fetch(`https://api.themoviedb.org/3/tv/60625/season/${id}?api_key=9b3189df2a7c7327d4392c7a38f225e9&language=fr-FR`);
+      const res = await fetch(`https://api.themoviedb.org/3/tv/60625/season/${id}?${process.env.API_KEY}&language=fr-FR`);
       const data = await res.json();
       setDataEpisode(data.episodes);
     };
@@ -46,7 +46,8 @@ return (
         <CardGroup>
           <div className="episodes-cards">
             {dataEpisode.map((episode) => (
-              <Card
+              <div className="episodes-cards-single">
+<Card
                 key={episode.id}
                 style={{ width: '18rem', margin: '1em' }}
               >
@@ -58,13 +59,15 @@ return (
                 />
                 <Card.Body className="episodes-cards-body">
                   <Card.Title className="episodes-cards-title">
-                    {episode.episode_number}: {episode.name}
+                    {episode.episode_number}. {episode.name}
                   </Card.Title>
                   <Card.Text className="episodes-cards-text">
                     {episode.overview}
                   </Card.Text>
                 </Card.Body>
               </Card>
+              </div>
+              
             ))}
           </div>
         </CardGroup>
