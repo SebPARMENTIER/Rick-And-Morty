@@ -23,7 +23,7 @@ const Home = () => (
         </div>
         <div className="home-img-m">
         <div className="home-img-m-text">
-            Salut Rick, d'accord, mais après, on ira voir les personnages et les épisodes !!!
+            Salut Rick, d'accord, mais après, on ira voir les personnages et les saisons !!!
           </div>
           <img className="home-img-morty" src={morty} alt="Morty" />
         </div>
