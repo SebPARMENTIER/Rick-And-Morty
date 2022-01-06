@@ -54,7 +54,7 @@ const Episode = () => {
                   <div className="episodes-cards-single">
                     <Card
                       key={episode.id}
-                      style={{ width: '18rem', margin: '1em' }}
+                      style={{ width: '18rem', margin: '1em', backgroundColor: '#fafd7cff' }}
                     >
                       <Card.Img
                         className="episodes-cards-img"
