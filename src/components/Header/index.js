@@ -32,7 +32,7 @@ const Header = () => (
             style={{ color: '#62a4ab' }}
             href="/character"
           >
-            Personages
+            Personnages
           </Nav.Link>
           <Nav.Link
             className="header-home-link"
